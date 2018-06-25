@@ -6,8 +6,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
 
-import static java.util.Arrays.asList;
-
 @RequiredArgsConstructor
 @SpringBootApplication
 public class Application {
@@ -20,10 +18,6 @@ public class Application {
 	
 	@EventListener
 	public void onReady(ApplicationReadyEvent e) {
-		modelRepo.saveAll(asList(
-				new Model("model1"),
-				new Model("model2"),
-				new Model("model3")
-		));
+		modelRepo.save(new Model("model1"));
 	}
 }

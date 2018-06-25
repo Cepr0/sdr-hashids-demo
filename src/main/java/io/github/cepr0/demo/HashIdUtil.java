@@ -6,7 +6,7 @@ import org.hashids.Hashids;
 @UtilityClass
 public class HashIdUtil {
 	
-	private static final Hashids HASHIDS = new Hashids();
+	private static final Hashids HASHIDS = new Hashids("a very complex salt", 8);
 	
 	public static String encode(Long source) {
 		return HASHIDS.encode(source);
