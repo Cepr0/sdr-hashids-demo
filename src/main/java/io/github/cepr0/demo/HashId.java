@@ -34,6 +34,6 @@ public class HashId implements Serializable {
 	
 	@Override
 	public String toString() {
-		return value.toString();
+		return HashIdUtil.encode(value);
 	}
 }
