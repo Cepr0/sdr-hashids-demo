@@ -1,22 +1,19 @@
 package io.github.cepr0.demo;
 
-import org.hashids.Hashids;
 import org.hibernate.type.descriptor.WrapperOptions;
 import org.hibernate.type.descriptor.java.AbstractTypeDescriptor;
 
 public class HashIdTypeDescriptor extends AbstractTypeDescriptor<HashId> {
 	
 	public static final HashIdTypeDescriptor INSTANCE = new HashIdTypeDescriptor();
-	private final Hashids hashids;
 	
 	public HashIdTypeDescriptor() {
 		super(HashId.class);
-		hashids = new Hashids("salt");
 	}
 	
 	@Override
 	public String toString(HashId value) {
-		return hashids.encode(value.getValue());
+		return value.getValue().toString();
 	}
 	
 	@Override

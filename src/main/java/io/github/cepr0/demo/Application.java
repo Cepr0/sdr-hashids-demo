@@ -4,9 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.event.EventListener;
-import org.springframework.data.rest.webmvc.config.RepositoryRestConfigurerAdapter;
 
 import static java.util.Arrays.asList;
 
@@ -20,11 +18,6 @@ public class Application {
 		SpringApplication.run(Application.class, args);
 	}
 	
-	@Bean
-	RepositoryRestConfigurerAdapter repositoryRestConfigurerAdapter() {
-		return new RestConfigurer();
-	}
-	
 	@EventListener
 	public void onReady(ApplicationReadyEvent e) {
 		modelRepo.saveAll(asList(
@@ -33,5 +26,4 @@ public class Application {
 				new Model("model3")
 		));
 	}
-	
 }
